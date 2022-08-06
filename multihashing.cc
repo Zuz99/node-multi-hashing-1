@@ -50,6 +50,8 @@ extern "C" {
 #include "x25x.h"
 #include "xevan.h"
 #include "yespower/yespower.h"
+#include "heavyhash/heavyhash.h"
+#include "heavyhash/keccak_tiny.h"
 }
 
 #include "boolberry.h"
@@ -225,6 +227,7 @@ DECLARE_CALLBACK(x16r, x16r_hash, 32);
 DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
 DECLARE_CALLBACK(x17, x17_hash, 32);
 DECLARE_CALLBACK(xevan, xevan_hash, 32);
+DECLARE_CALLBACK(heavyhash, heavyhash_hash, 32);
 
 DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
@@ -708,6 +711,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_ltncg", yespower_ltncg);
     NODE_SET_METHOD(exports, "yespower_r16", yespower_r16);
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
+    NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 }
 
 NODE_MODULE(multihashing, init)
