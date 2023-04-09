@@ -105,8 +105,8 @@
                 "heavyhash/keccak_tiny.c",
 				"yescrypt/yescrypt.c",
 				"yescrypt/sha256_Y.c",
-                "yescrypt/yescrypt-best.c",
-                "yescrypt/yescryptcommon.c"
+                "yescrypt/yescrypt-best.c"
+                
 
             ],
             'conditions': [
