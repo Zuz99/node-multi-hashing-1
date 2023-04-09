@@ -1,13 +1,13 @@
 {
     "targets": [
         {
-            "target_name": "multihashing",
+            "target_name": "teshasing",
             "sources": [
-                "multihashing.cc",
+                "teshasing.cc",
                 "allium.c",
                 "bcrypt.c",
                 "blake.c",
-                "
+               
                 "boolberry.cc",
                 "c11.c",
                 "cryptonight.c",
@@ -62,6 +62,7 @@
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",
                 "sha3/sph_blake.c",
+                
                 "sha3/sph_bmw.c",
                 "sha3/sph_cubehash.c",
                 "sha3/sph_echo.c",
@@ -102,7 +103,7 @@
                 "yespower/yespower-opt.c",
                 "heavyhash/heavyhash.c",
                 "heavyhash/keccak_tiny.c"
-				
+
             ],
             'conditions': [
                 ['OS=="linux"',
