@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 extern "C" {
+#include "argon2d.h"	
 #include "sha3d.h"
 #include "allium.h"
 #include "bcrypt.h"
@@ -233,6 +234,8 @@ DECLARE_CALLBACK(xevan, xevan_hash, 32);
 DECLARE_CALLBACK(heavyhash, heavyhash_hash, 32);
 DECLARE_CALLBACK(ghostrider, gr_hash, 32);
 DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
+DECLARE_CALLBACK(sha3d, sha3d_hash, 32);
+DECLARE_CALLBACK(argon2d, argon2d_hash, 32);
 
 DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
@@ -720,6 +723,8 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
+	NODE_SET_METHOD(exports, "sha3d", sha3d);
+	NODE_SET_METHOD(exports, "argon2d", argon2d);
 
 }
 
