@@ -62,9 +62,6 @@
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",
                 "sha3/sph_blake.c",
-               "yescrypt/sha256_Y.c",
-                "yescrypt/yescrypt-best.c",
-                "yescrypt/yescryptcommon.c",
                 "sha3/sph_bmw.c",
                 "sha3/sph_cubehash.c",
                 "sha3/sph_echo.c",
@@ -104,7 +101,10 @@
                 "yespower/yespower.c",
                 "yespower/yespower-opt.c",
                 "heavyhash/heavyhash.c",
-                "heavyhash/keccak_tiny.c"
+                "heavyhash/keccak_tiny.c",
+				"yescrypt/sha256_Y.c",
+                "yescrypt/yescrypt-best.c",
+                "yescrypt/yescryptcommon.c"
 
             ],
             'conditions': [
