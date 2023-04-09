@@ -52,8 +52,7 @@ extern "C" {
 #include "yespower/yespower.h"
 #include "heavyhash/heavyhash.h"
 #include "heavyhash/keccak_tiny.h"
-#include "yescrypt/yescrypt.h"
-#include "yescrypt/sha256_Y.h"
+
 }
 
 #include "boolberry.h"
@@ -250,7 +249,7 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_0_5_R32, yespower_0_5_R32_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_ltncg, yespower_ltncg_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_r16, yespower_r16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_tide, yespower_tide_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(yescrypt, yescrypt_hash, 32);
+
 
 DECLARE_FUNC(scrypt) {
     DECLARE_SCOPE;
@@ -715,7 +714,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_r16", yespower_r16);
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
-	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
+
 }
 
 NODE_MODULE(multihashing, init)

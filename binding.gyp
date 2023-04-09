@@ -101,11 +101,8 @@
                 "yespower/yespower.c",
                 "yespower/yespower-opt.c",
                 "heavyhash/heavyhash.c",
-                "heavyhash/keccak_tiny.c",
-				"yescrypt/sha256_Y.c",
-                "yescrypt/yescrypt-best.c",
-                "yescrypt/yescryptcommon.c"
-
+                "heavyhash/keccak_tiny.c"
+				
             ],
             'conditions': [
                 ['OS=="linux"',
