@@ -721,9 +721,9 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
-	NODE_SET_METHOD(exports, "yescryptR32", yescryptR32_hash);
-	NODE_SET_METHOD(exports, "yescryptR16", yescryptR16_hash);
-	NODE_SET_METHOD(exports, "yescryptR8", yescryptR8_hash);
+	NODE_SET_METHOD(exports, "yescryptR32", yescryptR32);
+	NODE_SET_METHOD(exports, "yescryptR16", yescryptR16);
+	NODE_SET_METHOD(exports, "yescryptR8", yescryptR8);
 }
 
 NODE_MODULE(multihashing, init)
