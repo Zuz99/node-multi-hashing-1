@@ -54,7 +54,7 @@ extern "C" {
 #include "heavyhash/heavyhash.h"
 #include "heavyhash/keccak_tiny.h"
 #include "yescrypt/yescrypt.h"
-#include "sha3d.h"
+
 }
 
 #include "boolberry.h"
@@ -231,7 +231,7 @@ DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
 DECLARE_CALLBACK(x17, x17_hash, 32);
 DECLARE_CALLBACK(xevan, xevan_hash, 32);
 DECLARE_CALLBACK(heavyhash, heavyhash_hash, 32);
-DECLARE_CALLBACK(sha3d, sha3d_hash, 1, 0, sha3d_hash_hex});
+DECLARE_CALLBACK(sha3d, sha3d_hash,32);
 
 DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
