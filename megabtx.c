@@ -11,24 +11,24 @@
 #define HASH_FUNC_COUNT_PERMUTATIONS_7 5040
 #define HASH_FUNC_COUNT_PERMUTATIONS 40320
 
-#include <sha3/sph_blake.h>
-#include <sha3/sph_bmw.h>
-#include <sha3/sph_groestl.h>
-#include <sha3/sph_jh.h>
-#include <sha3/sph_keccak.h>
-#include <sha3/sph_skein.h>
-#include <sha3/sph_luffa.h>
-#include <sha3/sph_cubehash.h>
-#include <sha3/sph_shavite.h>
-#include <sha3/sph_simd.h>
-#include <sha3/sph_echo.h>
-#include <sha3/sph_hamsi.h>
-#include <sha3/sph_fugue.h>
-#include <sha3/sph_shabal.h>
-#include <sha3/sph_whirlpool.h>
-#include <sha3/sph_streebog.h>
-#include <sha3/sph_haval.h>
-#include <sha3/sph_sha2.h>
+#include <sph_blake.h>
+#include <sph_bmw.h>
+#include <sph_groestl.h>
+#include <sph_jh.h>
+#include <sph_keccak.h>
+#include <sph_skein.h>
+#include <sph_luffa.h>
+#include <sph_cubehash.h>
+#include <sph_shavite.h>
+#include <sph_simd.h>
+#include <sph_echo.h>
+#include <sph_hamsi.h>
+#include <sph_fugue.h>
+#include <sph_shabal.h>
+#include <sph_whirlpool.h>
+#include <sph_streebog.h>
+#include <sph_haval.h>
+#include <sph_sha2.h>
 
 
 #define _ALIGN(x) __attribute__ ((aligned(x)))
