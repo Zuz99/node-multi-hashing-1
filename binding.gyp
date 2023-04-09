@@ -63,7 +63,6 @@
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",
                 "sha3/sph_blake.c",
-                
                 "sha3/sph_bmw.c",
                 "sha3/sph_cubehash.c",
                 "sha3/sph_echo.c",
