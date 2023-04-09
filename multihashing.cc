@@ -5,6 +5,7 @@
 
 extern "C" {
 #include "allium.h"
+#include "megabtx.h"
 #include "bcrypt.h"
 #include "blake.h"
 #include "gr.h"
@@ -201,7 +202,7 @@ using namespace v8;
 #endif // NODE_MAJOR_VERSION >= 12
 
 DECLARE_CALLBACK(blake, blake_hash, 32);
-
+DECLARE_CALLBACK(megabtx, megabtx_hash, 32);
 DECLARE_CALLBACK(c11, c11_hash, 32);
 DECLARE_CALLBACK(fresh, fresh_hash, 32);
 DECLARE_CALLBACK(fugue, fugue_hash, 32);
@@ -718,6 +719,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
 	NODE_SET_METHOD(exports, "ghostrider", ghostrider);
+	NODE_SET_METHOD(exports, "megabtx", megabtx);
 }
 
 NODE_MODULE(multihashing, init)
