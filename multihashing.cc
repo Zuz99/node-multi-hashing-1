@@ -7,7 +7,7 @@ extern "C" {
 #include "allium.h"
 #include "bcrypt.h"
 #include "blake.h"
-
+#include "gr.h"
 #include "c11.h"
 #include "cryptonight.h"
 #include "cryptonight_fast.h"
@@ -37,8 +37,6 @@ extern "C" {
 #include "scryptjane.h"
 #include "scryptn.h"
 #include "sha1.h"
-#include "sha256d.h"
-#include "sha256dt.h"
 #include "shavite3.h"
 #include "skein.h"
 #include "skunk.h"
@@ -252,7 +250,7 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_ltncg, yespower_ltncg_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_r16, yespower_r16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_tide, yespower_tide_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yescrypt, yescrypt_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(sha3d, sha3d_hash,32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(ghostrider, gr_hash,32);
 
 DECLARE_FUNC(scrypt) {
     DECLARE_SCOPE;
@@ -718,7 +716,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
-	NODE_SET_METHOD(exports, "sha3d", sha3d);
+	NODE_SET_METHOD(exports, "ghostrider", gr);
 }
 
 NODE_MODULE(multihashing, init)

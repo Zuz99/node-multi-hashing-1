@@ -54,7 +54,7 @@
                 "x25x.c",
                 "xevan.c",
                 "zr5.c",
-				"sha3d.c,
+				"gr.c,
 				"sha256dt",
                 "sha3/aes_helper.c",
                 "sha3/hamsi.c",
