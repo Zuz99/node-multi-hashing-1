@@ -101,7 +101,7 @@ enum blake2s_constant
 };
 
 #pragma pack(push, 1)
-typedef struct __blake2s_param
+typedef struct ALIGNME( 64 ) __blake2s_state
 {
 	uint8_t  digest_length; // 1
 	uint8_t  key_length;    // 2
@@ -116,7 +116,7 @@ typedef struct __blake2s_param
 	uint8_t  personal[BLAKE2S_PERSONALBYTES];  // 32
 } blake2s_param;
 
-ALIGN( 64 ) typedef struct __blake2s_state
+typedef struct ALIGNME( 64 ) __blake2s_state
 {
 	uint32_t h[8];
 	uint32_t t[2];
