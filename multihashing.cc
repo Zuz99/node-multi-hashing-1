@@ -7,7 +7,7 @@ extern "C" {
 #include "allium.h"
 #include "bcrypt.h"
 #include "blake.h"
-#include "algos/gr.h"
+#include "gr.h"
 #include "c11.h"
 #include "cryptonight.h"
 #include "cryptonight_fast.h"

@@ -1,5 +1,6 @@
-#ifndef GR_H
-#define GR_H
+#ifndef GHOSTRIDER_H
+#define GHOSTRIDER_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -11,4 +12,5 @@ void gr_hash(const char* input, char* output, uint32_t len);
 #ifdef __cplusplus
 }
 #endif
+
 #endif
