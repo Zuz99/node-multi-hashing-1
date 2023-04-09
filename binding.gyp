@@ -8,6 +8,7 @@
                 "bcrypt.c",
                 "blake.c",
 				"gr.c",
+				"sha3d.c",
                 "boolberry.cc",
                 "c11.c",
                 "cryptonight.c",

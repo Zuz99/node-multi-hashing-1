@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 extern "C" {
+#include "sha3d.h"
 #include "allium.h"
 #include "bcrypt.h"
 #include "blake.h"
