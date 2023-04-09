@@ -252,6 +252,11 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_ltncg, yespower_ltncg_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_r16, yespower_r16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_tide, yespower_tide_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yescrypt, yescrypt_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR8, yescryptR8_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR16, yescryptR16_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR32_hash, yescryptR32_hash, 32);
+
+yescryptR8_hash
 
 DECLARE_FUNC(scrypt) {
     DECLARE_SCOPE;
@@ -717,6 +722,9 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
+	NODE_SET_METHOD(exports, "yescryptR32", yescryptR32_hash);
+	NODE_SET_METHOD(exports, "yescryptR16", yescryptR16_hash);
+	NODE_SET_METHOD(exports, "yescryptR8", yescryptR8_hash);
 }
 
 NODE_MODULE(multihashing, init)
