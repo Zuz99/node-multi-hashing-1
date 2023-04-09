@@ -656,7 +656,7 @@ DECLARE_FUNC(yespower_sugar) {
     SET_BUFFER_RETURN(output, 32);
 }
 
-DECLARE_FUNC(yespower_urx) {
+/*DECLARE_FUNC(yespower_urx) {
     DECLARE_SCOPE;
 
     if (args.Length() < 1)
@@ -679,7 +679,7 @@ DECLARE_FUNC(yespower_urx) {
     yespower_urx_hash(input, output, input_len);
 
     SET_BUFFER_RETURN(output, 32);
-}
+}*/
 
 DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "allium", allium);
