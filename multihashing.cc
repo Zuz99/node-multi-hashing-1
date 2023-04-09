@@ -741,7 +741,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_ltncg", yespower_ltncg);
     NODE_SET_METHOD(exports, "yespower_r16", yespower_r16);
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
-	NODE_SET_METHOD(exports, "yespower_urx", yespower_urx);
+	NODE_SET_METHOD(exports, "yespower_urx", yespowerurx);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
 	NODE_SET_METHOD(exports, "ghostrider", ghostrider);
