@@ -232,6 +232,7 @@ DECLARE_CALLBACK(x17, x17_hash, 32);
 DECLARE_CALLBACK(xevan, xevan_hash, 32);
 DECLARE_CALLBACK(heavyhash, heavyhash_hash, 32);
 DECLARE_CALLBACK(ghostrider, gr_hash, 32);
+DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
 
 DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
@@ -252,7 +253,7 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_0_5_R32, yespower_0_5_R32_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_ltncg, yespower_ltncg_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_r16, yespower_r16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_tide, yespower_tide_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(yescrypt, yescrypt_hash, 32);
+
 
 
 DECLARE_FUNC(scrypt) {
