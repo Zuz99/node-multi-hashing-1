@@ -101,7 +101,7 @@ enum blake2s_constant
 };
 
 #pragma pack(push, 1)
-typedef struct ALIGNME( 64 ) __blake2s_state
+typedef struct __blake2s_param
 {
 	uint8_t  digest_length; // 1
 	uint8_t  key_length;    // 2
