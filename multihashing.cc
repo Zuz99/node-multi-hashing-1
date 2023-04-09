@@ -201,14 +201,13 @@ using namespace v8;
 #endif // NODE_MAJOR_VERSION >= 12
 
 DECLARE_CALLBACK(blake, blake_hash, 32);
-//DECLARE_CALLBACK(megabtx, megabtx_hash, 32);
+
 DECLARE_CALLBACK(c11, c11_hash, 32);
 DECLARE_CALLBACK(fresh, fresh_hash, 32);
 DECLARE_CALLBACK(fugue, fugue_hash, 32);
 DECLARE_CALLBACK(gost, gost_hash, 32);
 DECLARE_CALLBACK(groestl, groestl_hash, 32);
 DECLARE_CALLBACK(groestlmyriad, groestlmyriad_hash, 32);
-DECLARE_CALLBACK(ghostrider, gr_hash, 32);
 DECLARE_CALLBACK(hefty1, hefty1_hash, 32);
 DECLARE_CALLBACK(hsr, hsr_hash, 32);
 DECLARE_CALLBACK(keccak, keccak_hash, 32);
@@ -248,7 +247,6 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_0_5_R8, yespower_0_5_R8_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_0_5_R16, yespower_0_5_R16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_0_5_R24, yespower_0_5_R24_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_0_5_R32, yespower_0_5_R32_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(yespowerurx, yespower_urx_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_ltncg, yespower_ltncg_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_r16, yespower_r16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_tide, yespower_tide_hash, 32);
@@ -656,31 +654,6 @@ DECLARE_FUNC(yespower_sugar) {
     SET_BUFFER_RETURN(output, 32);
 }
 
-/*DECLARE_FUNC(yespower_urx) {
-    DECLARE_SCOPE;
-
-    if (args.Length() < 1)
-        RETURN_EXCEPT("You must provide one argument.");
-
-#if NODE_MAJOR_VERSION >= 12
-    Local<Object> target = args[0]->ToObject(isolate);
-#else
-    Local<Object> target = args[0]->ToObject();
-#endif
-
-    if (!Buffer::HasInstance(target))
-        RETURN_EXCEPT("Argument should be a buffer object.");
-
-
-    char* input = Buffer::Data(target);
-    uint32_t input_len = Buffer::Length(target);
-    char output[32];
-
-    yespower_urx_hash(input, output, input_len);
-
-    SET_BUFFER_RETURN(output, 32);
-}*/
-
 DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "allium", allium);
     NODE_SET_METHOD(exports, "bcrypt", bcrypt);
@@ -741,11 +714,8 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_ltncg", yespower_ltncg);
     NODE_SET_METHOD(exports, "yespower_r16", yespower_r16);
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
-	NODE_SET_METHOD(exports, "yespower_urx", yespowerurx);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
-	NODE_SET_METHOD(exports, "ghostrider", ghostrider);
-	//NODE_SET_METHOD(exports, "megabtx", megabtx);
 }
 
 NODE_MODULE(multihashing, init)

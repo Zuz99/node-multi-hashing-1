@@ -2,36 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "sph/extra.h"
-#include "sph/sph_blake.h"
-#include "sph/sph_bmw.h"
-#include "sph/sph_groestl.h"
-#include "sph/sph_jh.h"
-#include "sph/sph_keccak.h"
-#include "sph/sph_skein.h"
-#include "sph/sph_luffa.h"
-#include "sph/sph_cubehash.h"
-#include "sph/sph_shavite.h"
-#include "sph/sph_simd.h"
-#include "sph/sph_echo.h"
-#include "sph/sph_hamsi.h"
-#include "sph/sph_fugue.h"
-#include "sph/sph_shabal.h"
-#include "sph/sph_whirlpool.h"
-#include "sph/sph_sha2.h"
-#include "sph/sph_haval.h"
-#include "sph/sph_tiger.h"
-#include "sph/lyra2.h"
-#include "sph/gost_streebog.h"
-#include "cryptonote/cryptonight_dark.h"
-#include "cryptonote/cryptonight_dark_lite.h"
-#include "cryptonote/cryptonight_fast.h"
-#include "cryptonote/cryptonight.h"
-#include "cryptonote/cryptonight_lite.h"
-#include "cryptonote/cryptonight_soft_shell.h"
-#include "cryptonote/cryptonight_turtle.h"
-#include "cryptonote/cryptonight_turtle_lite.h"
-#include <stdio.h>
+#include "gr.h"
+#include "/sha3/sph_blake.h"
+#include "/sha3/sph_bmw.h"
+#include "/sha3/sph_groestl.h"
+#include "/sha3/sph_jh.h"
+#include "/sha3/sph_keccak.h"
+#include "/sha3/sph_skein.h"
+#include "/sha3/sph_luffa.h"
+#include "/sha3/sph_cubehash.h"
+#include "/sha3/sph_shavite.h"
+#include "/sha3/sph_simd.h"
+#include "/sha3/sph_echo.h"
+#include "/sha3/sph_hamsi.h"
+#include "/sha3/sph_fugue.h"
+#include "/sha3/sph_shabal.h"
+#include "/sha3/sph_whirlpool.h"
+#include "/sha3/sph_sha2.h"
+#include "/sha3/sph_tiger.h"
+#include "/sha3/sph_haval.h"
+#include "Lyra2.h"
+#include "gost.h"
+#include "crypto/cryptonight_dark.h"
+#include "crypto/cryptonight_dark_lite.h"
+#include "crypto/cryptonight_fast.h"
+#include "crypto/cryptonight.h"
+#include "crypto/cryptonight_lite.h"
+#include "crypto/cryptonight_soft_shell.h"
+#include "crypto/cryptonight_turtle.h"
+#include "crypto/cryptonight_turtle_lite.h"
 
 enum Algo {
         BLAKE = 0,
@@ -54,19 +53,11 @@ enum Algo {
 
 enum CNAlgo {
 	CNDark = 0,
-	CNDarkf,
 	CNDarklite,
-	CNDarklitef,
 	CNFast,
-	CNFastf,
-	CNF,
 	CNLite,
-	CNLitef,
-	CNSoftshellf,
 	CNTurtle,
-	CNTurtlef,
 	CNTurtlelite,
-	CNTurtlelitef,
 	CN_HASH_FUNC_COUNT
 };
 
@@ -111,29 +102,7 @@ static void getAlgoString(void *mem, unsigned int size, uint8_t* selectedAlgoOut
   }
 }
 
-void print_hex_memory(void *mem, unsigned int size) {
-  int i;
-  unsigned char *p = (unsigned char *)mem;
-  unsigned int len = size/2;
-  for (i=0;i<len; i++) {
-    printf("%02x", p[(len - i - 1)]);
-  }
-  printf("\n");
-}
-
-void SwapBytes(void *pv, unsigned int n)
-{
-    char *p = pv;
-    unsigned int lo, hi;
-    for(lo=0, hi=n-1; hi>lo; lo++, hi--)
-    {
-        char tmp=p[lo];
-        p[lo] = p[hi];
-        p[hi] = tmp;
-    }
-}
-
-void gr_hash(const char* input, char* output) {
+void gr_hash(const char* input, char* output, uint32_t len) {
 	uint32_t hash[64/4];
 	sph_blake512_context ctx_blake;
 	sph_bmw512_context ctx_bmw;
@@ -158,11 +127,9 @@ void gr_hash(const char* input, char* output) {
 	void *in = (void*) input;
 	int size = 80;
 	uint8_t selectedAlgoOutput[15] = {0};
-	uint8_t selectedCNAlgoOutput[14] = {0};
+	uint8_t selectedCNAlgoOutput[6] = {0};
 	getAlgoString(&input[4], 64, selectedAlgoOutput, 15);
-	getAlgoString(&input[4], 64, selectedCNAlgoOutput, 14);
-	//printf("previous hash=");
-	//print_hex_memory(&input[4], 64);
+	getAlgoString(&input[4], 64, selectedCNAlgoOutput, 6);
 	int i;
 	for (i = 0; i < 18; i++)
 	{
@@ -205,44 +172,20 @@ void gr_hash(const char* input, char* output) {
 		 case CNDark:
 			cryptonightdark_hash(in, hash, size, 1);
 			break;
-		 case CNDarkf:
-			cryptonightdark_fast_hash(in, hash, size);
-			break;
 		 case CNDarklite:
 			cryptonightdarklite_hash(in, hash, size, 1);
-			break;
-		 case CNDarklitef:
-			cryptonightdarklite_fast_hash(in, hash, size);
 			break;
 		 case CNFast:
 			cryptonightfast_hash(in, hash, size, 1);
 			break;
-		 case CNFastf:
-			cryptonightfast_fast_hash(in, hash, size);
-			break;
-		 case CNF:
-			cryptonight_fast_hash(in, hash, size);
-			break;
 		 case CNLite:
 			cryptonightlite_hash(in, hash, size, 1);
-			break;
-		 case CNLitef:
-			cryptonightlite_fast_hash(in, hash, size);
-			break;
-		 case CNSoftshellf:
-			cryptonight_soft_shell_fast_hash(in, hash, size);
 			break;
 		 case CNTurtle:
 			cryptonightturtle_hash(in, hash, size, 1);
 			break;
-		 case CNTurtlef:
-			cryptonightturtle_fast_hash(in, hash, size);
-			break;
 		 case CNTurtlelite:
 			cryptonightturtlelite_hash(in, hash, size, 1);
-			break;
-		 case CNTurtlelitef:;
-			cryptonightturtlelite_fast_hash(in, hash, size);
 			break;
 		}
 		//selection core algo

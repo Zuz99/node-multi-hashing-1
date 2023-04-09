@@ -4,10 +4,10 @@
             "target_name": "multihashing",
             "sources": [
                 "multihashing.cc",
-				
                 "allium.c",
                 "bcrypt.c",
                 "blake.c",
+				"gr.c",
                 "boolberry.cc",
                 "c11.c",
                 "cryptonight.c",
@@ -55,8 +55,6 @@
                 "x25x.c",
                 "xevan.c",
                 "zr5.c",
-				"gr.c",
-				"sha256dt",
                 "sha3/aes_helper.c",
                 "sha3/hamsi.c",
                 "sha3/KeccakP-800-reference.c",
@@ -64,6 +62,7 @@
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",
                 "sha3/sph_blake.c",
+                
                 "sha3/sph_bmw.c",
                 "sha3/sph_cubehash.c",
                 "sha3/sph_echo.c",
