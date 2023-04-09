@@ -676,7 +676,7 @@ DECLARE_FUNC(yespower_urx) {
     uint32_t input_len = Buffer::Length(target);
     char output[32];
 
-    yespower_urx__hash(input, output, input_len);
+    yespower_urx_hash(input, output, input_len);
 
     SET_BUFFER_RETURN(output, 32);
 }
