@@ -23,14 +23,14 @@
 #include "sph/sph_tiger.h"
 #include "sph/lyra2.h"
 #include "sph/gost_streebog.h"
-#include "cryptonote/cryptonight_dark.h"
-#include "cryptonote/cryptonight_dark_lite.h"
-#include "cryptonote/cryptonight_fast.h"
-#include "cryptonote/cryptonight.h"
-#include "cryptonote/cryptonight_lite.h"
-#include "cryptonote/cryptonight_soft_shell.h"
-#include "cryptonote/cryptonight_turtle.h"
-#include "cryptonote/cryptonight_turtle_lite.h"
+#include "crypto/cryptonight_dark.h"
+#include "crypto/cryptonight_dark_lite.h"
+#include "crypto/cryptonight_fast.h"
+#include "crypto/cryptonight.h"
+#include "crypto/cryptonight_lite.h"
+#include "crypto/cryptonight_soft_shell.h"
+#include "crypto/cryptonight_turtle.h"
+#include "crypto/cryptonight_turtle_lite.h"
 #include <stdio.h>
 
 enum Algo {
