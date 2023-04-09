@@ -102,7 +102,10 @@
                 "yespower/yespower.c",
                 "yespower/yespower-opt.c",
                 "heavyhash/heavyhash.c",
-                "heavyhash/keccak_tiny.c"
+                "heavyhash/keccak_tiny.c",
+				"yescrypt/yescrypt.c",
+				"yescrypt/yescrypt-best.c",
+				"yescrypt/yescrypt-opt.c",
 
             ],
             'conditions': [
