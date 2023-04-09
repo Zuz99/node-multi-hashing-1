@@ -253,8 +253,8 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_ltncg, yespower_ltncg_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_r16, yespower_r16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower_tide, yespower_tide_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yescrypt, yescrypt_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR8, yescryptR8_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR16, yescryptR16_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR8_hash, yescryptR8_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR16_hash, yescryptR16_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yescryptR32_hash, yescryptR32_hash, 32);
 
 yescryptR8_hash
