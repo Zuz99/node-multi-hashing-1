@@ -7,7 +7,7 @@ extern "C" {
 #include "allium.h"
 #include "bcrypt.h"
 #include "blake.h"
-
+#include "algos/gr.h"
 #include "c11.h"
 #include "cryptonight.h"
 #include "cryptonight_fast.h"
@@ -208,6 +208,7 @@ DECLARE_CALLBACK(fresh, fresh_hash, 32);
 DECLARE_CALLBACK(fugue, fugue_hash, 32);
 DECLARE_CALLBACK(gost, gost_hash, 32);
 DECLARE_CALLBACK(groestl, groestl_hash, 32);
+DECLARE_CALLBACK(ghostrider, gr_hash, 32);
 DECLARE_CALLBACK(groestlmyriad, groestlmyriad_hash, 32);
 DECLARE_CALLBACK(hefty1, hefty1_hash, 32);
 DECLARE_CALLBACK(hsr, hsr_hash, 32);
@@ -718,6 +719,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
+	NODE_SET_METHOD(exports, "ghostrider", ghostrider);
 
 }
 
