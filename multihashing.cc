@@ -6,6 +6,7 @@
 extern "C" {
 #include "allium.h"
 #include "megabtx.h"
+#include "sph/sph_blake.h"
 #include "bcrypt.h"
 #include "blake.h"
 #include "gr.h"
