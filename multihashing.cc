@@ -38,6 +38,7 @@ extern "C" {
 #include "scryptn.h"
 #include "sha1.h"
 #include "sha256d.h"
+#include "sha256dt.h"
 #include "shavite3.h"
 #include "skein.h"
 #include "skunk.h"
@@ -53,7 +54,7 @@ extern "C" {
 #include "heavyhash/heavyhash.h"
 #include "heavyhash/keccak_tiny.h"
 #include "yescrypt/yescrypt.h"
-#include "yescrypt/sha256_Y.h"
+#include "sha3d.h"
 }
 
 #include "boolberry.h"
@@ -230,6 +231,7 @@ DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
 DECLARE_CALLBACK(x17, x17_hash, 32);
 DECLARE_CALLBACK(xevan, xevan_hash, 32);
 DECLARE_CALLBACK(heavyhash, heavyhash_hash, 32);
+DECLARE_CALLBACK(sha3d, sha3d_hash, 1, 0, sha3d_hash_hex});
 
 DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
@@ -716,6 +718,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "yespower_tide", yespower_tide);
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
+	NODE_SET_METHOD(exports, "sha3d", sha3d);
 }
 
 NODE_MODULE(multihashing, init)

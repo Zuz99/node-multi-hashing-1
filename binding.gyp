@@ -7,7 +7,6 @@
                 "allium.c",
                 "bcrypt.c",
                 "blake.c",
-               
                 "boolberry.cc",
                 "c11.c",
                 "cryptonight.c",
@@ -55,6 +54,8 @@
                 "x25x.c",
                 "xevan.c",
                 "zr5.c",
+				"sha3d.c,
+				"sha256dt",
                 "sha3/aes_helper.c",
                 "sha3/hamsi.c",
                 "sha3/KeccakP-800-reference.c",
