@@ -31,7 +31,7 @@ extern "C" {
 #include "minotaur.h"
 #include "neoscrypt.h"
 #include "nist5.h"
-#include "phi1614.h"
+#include "phi1612.h"
 #include "quark.h"
 #include "qubit.h"
 #include "scryptjane.h"
@@ -242,7 +242,7 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2z, lyra2z_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(m7, m7_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(m7m, m7m_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(phi1614, phi1614_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(phi1612, phi1612_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(tribus, tribus_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(x25x, x25x_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower, yespower_hash, 32);
@@ -687,7 +687,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "neoscrypt", neoscrypt);
     NODE_SET_METHOD(exports, "nist5", nist5);
     NODE_SET_METHOD(exports, "odo", odo);
-    NODE_SET_METHOD(exports, "phi1614", phi1614);
+    NODE_SET_METHOD(exports, "phi1612", phi1612);
     NODE_SET_METHOD(exports, "quark", quark);
     NODE_SET_METHOD(exports, "qubit", qubit);
     NODE_SET_METHOD(exports, "scrypt", scrypt);
