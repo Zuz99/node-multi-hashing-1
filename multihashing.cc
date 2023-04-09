@@ -1,6 +1,6 @@
 #include <node.h>
 #include <node_buffer.h>
-#include <v8.h>
+#include <v14.h>
 #include <stdint.h>
 
 extern "C" {
@@ -31,7 +31,7 @@ extern "C" {
 #include "minotaur.h"
 #include "neoscrypt.h"
 #include "nist5.h"
-#include "phi1612.h"
+#include "phi1614.h"
 #include "quark.h"
 #include "qubit.h"
 #include "scryptjane.h"
@@ -61,7 +61,7 @@ extern "C" {
 #include "odo.h"
 
 using namespace node;
-using namespace v8;
+using namespace v14;
 
 #if NODE_MAJOR_VERSION >= 4
 
@@ -72,7 +72,7 @@ using namespace v8;
     void x(const FunctionCallbackInfo<Value>& args)
 
 #define DECLARE_SCOPE \
-    v8::Isolate* isolate = args.GetIsolate();
+    v14::Isolate* isolate = args.GetIsolate();
 
 #define SET_BUFFER_RETURN(x, len) \
     args.GetReturnValue().Set(Buffer::Copy(isolate, x, len).ToLocalChecked());
@@ -111,7 +111,7 @@ using namespace v8;
 
 #endif // NODE_MAJOR_VERSION
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
 
 #define DECLARE_CALLBACK(name, hash, output_len) \
     DECLARE_FUNC(name) { \
@@ -199,7 +199,7 @@ using namespace v8;
     SET_BUFFER_RETURN(output, output_len); \
 }
 
-#endif // NODE_MAJOR_VERSION >= 12
+#endif // NODE_MAJOR_VERSION >= 14
 
 DECLARE_CALLBACK(blake, blake_hash, 32);
 
@@ -242,7 +242,7 @@ DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2z, lyra2z_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(m7, m7_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(m7m, m7m_hash, 32);
-DECLARE_NO_INPUT_LENGTH_CALLBACK(phi1612, phi1612_hash, 32);
+DECLARE_NO_INPUT_LENGTH_CALLBACK(phi1614, phi1614_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(tribus, tribus_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(x25x, x25x_hash, 32);
 DECLARE_NO_INPUT_LENGTH_CALLBACK(yespower, yespower_hash, 32);
@@ -261,7 +261,7 @@ DECLARE_FUNC(scrypt) {
     if (args.Length() < 3)
         RETURN_EXCEPT("You must provide buffer to hash, N value, and R value");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -270,7 +270,7 @@ DECLARE_FUNC(scrypt) {
     if (!Buffer::HasInstance(target))
         RETURN_EXCEPT("Argument should be a buffer object.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
     unsigned int nValue = args[1]->Uint32Value(currentContext).FromJust();
     unsigned int rValue = args[2]->Uint32Value(currentContext).FromJust();
@@ -294,7 +294,7 @@ DECLARE_FUNC(neoscrypt) {
     if (args.Length() < 2)
         RETURN_EXCEPT("You must provide two arguments.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -317,7 +317,7 @@ DECLARE_FUNC(scryptn) {
     if (args.Length() < 2)
         RETURN_EXCEPT("You must provide buffer to hash and N factor.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -326,7 +326,7 @@ DECLARE_FUNC(scryptn) {
     if (!Buffer::HasInstance(target))
         RETURN_EXCEPT("Argument should be a buffer object.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
     unsigned int nFactor = args[1]->Uint32Value(currentContext).FromJust();
 #else
@@ -352,7 +352,7 @@ DECLARE_FUNC(scryptjane) {
     if (args.Length() < 5)
         RETURN_EXCEPT("You must provide two argument: buffer, timestamp as number, and nChainStarTime as number, nMin, and nMax");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -361,7 +361,7 @@ DECLARE_FUNC(scryptjane) {
     if (!Buffer::HasInstance(target))
         RETURN_EXCEPT("First should be a buffer object.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
     int timestamp = args[1]->Int32Value(currentContext).FromJust();
     int nChainStartTime = args[2]->Int32Value(currentContext).FromJust();
@@ -386,7 +386,7 @@ DECLARE_FUNC(scryptjane) {
 
 DECLARE_FUNC(cryptonight) {
     DECLARE_SCOPE;
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
 #endif
 
@@ -399,13 +399,13 @@ DECLARE_FUNC(cryptonight) {
 
     if (args.Length() >= 2) {
         if (args[1]->IsBoolean())
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
             fast = args[1]->BooleanValue(isolate);
 #else
             fast = args[1]->BooleanValue();
 #endif
         else if (args[1]->IsUint32())
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
             cn_variant = args[1]->Uint32Value(currentContext).FromJust();
 #else
             cn_variant = args[1]->Uint32Value();
@@ -420,7 +420,7 @@ DECLARE_FUNC(cryptonight) {
 
     if (args.Length() >= 3) {
         if (args[2]->IsUint32())
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
             height = args[2]->Uint32Value(currentContext).FromJust();
 #else
             height = args[2]->Uint32Value();
@@ -429,7 +429,7 @@ DECLARE_FUNC(cryptonight) {
             RETURN_EXCEPT("Argument 3 should be uint32_t");
     }
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -454,7 +454,7 @@ DECLARE_FUNC(cryptonight) {
 }
 DECLARE_FUNC(cryptonightfast) {
     DECLARE_SCOPE;
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
 #endif
 
@@ -466,13 +466,13 @@ DECLARE_FUNC(cryptonightfast) {
 
     if (args.Length() >= 2) {
         if (args[1]->IsBoolean())
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
             fast = args[1]->BooleanValue(isolate);
 #else
             fast = args[1]->BooleanValue();
 #endif
         else if (args[1]->IsUint32())
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
             cn_variant = args[1]->Uint32Value(currentContext).FromJust();
 #else
             cn_variant = args[1]->Uint32Value();
@@ -481,7 +481,7 @@ DECLARE_FUNC(cryptonightfast) {
             RETURN_EXCEPT("Argument 2 should be a boolean or uint32_t");
     }
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -506,14 +506,14 @@ DECLARE_FUNC(cryptonightfast) {
 }
 DECLARE_FUNC(boolberry) {
     DECLARE_SCOPE;
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
 #endif
 
     if (args.Length() < 2)
         RETURN_EXCEPT("You must provide two arguments.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
     Local<Object> target_spad = args[1]->ToObject(isolate);
 #else
@@ -530,7 +530,7 @@ DECLARE_FUNC(boolberry) {
 
     if (args.Length() >= 3) {
         if (args[2]->IsUint32())
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
             height = args[2]->Uint32Value(currentContext).FromJust();
 #else
             height = args[2]->Uint32Value();
@@ -557,7 +557,7 @@ DECLARE_FUNC(skunk) {
     if (args.Length() < 1)
         RETURN_EXCEPT("You must provide one argument.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -580,7 +580,7 @@ DECLARE_FUNC(odo) {
     if (args.Length() < 2)
         RETURN_EXCEPT("You must provide buffer to hash and key value");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -589,7 +589,7 @@ DECLARE_FUNC(odo) {
     if (!Buffer::HasInstance(target))
         RETURN_EXCEPT("Argument should be a buffer object.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Context> currentContext = isolate->GetCurrentContext();
     unsigned int keyValue = args[1]->Uint32Value(currentContext).FromJust();
 #else
@@ -612,7 +612,7 @@ DECLARE_FUNC(yespower_0_5_R8G) {
     if (args.Length() < 1)
         RETURN_EXCEPT("You must provide one argument.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -638,7 +638,7 @@ DECLARE_FUNC(yespower_sugar) {
     if (args.Length() < 1)
         RETURN_EXCEPT("You must provide one argument.");
 
-#if NODE_MAJOR_VERSION >= 12
+#if NODE_MAJOR_VERSION >= 14
     Local<Object> target = args[0]->ToObject(isolate);
 #else
     Local<Object> target = args[0]->ToObject();
@@ -687,7 +687,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "neoscrypt", neoscrypt);
     NODE_SET_METHOD(exports, "nist5", nist5);
     NODE_SET_METHOD(exports, "odo", odo);
-    NODE_SET_METHOD(exports, "phi1612", phi1612);
+    NODE_SET_METHOD(exports, "phi1614", phi1614);
     NODE_SET_METHOD(exports, "quark", quark);
     NODE_SET_METHOD(exports, "qubit", qubit);
     NODE_SET_METHOD(exports, "scrypt", scrypt);
