@@ -718,4 +718,4 @@ DECLARE_INIT(init) {
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
 }
 
-NODE_MODULE(teshasing, init)
+NODE_MODULE(multihashing, init)
