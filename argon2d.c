@@ -36,7 +36,7 @@ void argon2d_crds_call(const void *input, void *output)
 	
 	argon2_ctx(&context, Argon2_d);
 }
-void argon2d_call(const void *input, void *output)
+void argon2d_dyn_call(const void *input, void *output)
 {
     argon2_context context;
     context.out = (uint8_t *)output;
