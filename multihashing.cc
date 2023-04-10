@@ -724,7 +724,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "heavyhash", heavyhash);
 	NODE_SET_METHOD(exports, "yescrypt", yescrypt);
 	NODE_SET_METHOD(exports, "sha3d", sha3d);
-	NODE_SET_METHOD(exports, "argon2d", argon2d_dyn);
+	NODE_SET_METHOD(exports, "argon2d", argon2d);
 
 }
 
