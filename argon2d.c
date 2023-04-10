@@ -91,9 +91,9 @@ void argon2d_crds_hash(const unsigned char* input, unsigned char* output, unsign
 	argon2d_crds_call(input, output);
 }
 
-void argon2d_hash(const unsigned char* input, unsigned char* output, unsigned int len)
+void argon2d_dyn_hash(const unsigned char* input, unsigned char* output, unsigned int len)
 {
-	argon2d_call(input, output);
+	argon2d_dyn_call(input, output);
 }
 
 void argon2d16000_hash(const unsigned char* input, unsigned char* output, unsigned int len)
