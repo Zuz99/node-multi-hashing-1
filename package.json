@@ -1,54 +1,35 @@
 {
-    "name": "node-merged-pool",
-    "version": "1.0.8",
-    "description": "High performance Stratum poolserver in Node.js for merged mining",
-    "keywords": [
-        "stratum",
-        "merged",
-        "mining",
-        "pool",
-        "server",
-        "poolserver",
-        "bitcoin",
-        "litecoin",
-        "scrypt",
-        "multipool",
-        "multicoin"
-    ],
-    "homepage": "https://github.com/nzsquirrell/node-merged-pool",
-    "bugs": {
-        "url": "https://github.com/nzsquirrell/node-merged-pool/issues"
+    "name": "multi-hashing",
+    "version": "0.0.9",
+    "main": "multihashing",
+    "author": {
+        "name": "Matthew Little",
+        "email": "zone117x@gmail.com"
     },
-    "license": "GPL-2.0",
-    "author": "Daniel Beal",
-    "contributors": [
-        "zone117x",
-        "vekexasia",
-        "TheSeven",
-        "sigwo",
-        "infernoman"
-    ],
-    "main": "lib/index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/nzsquirrell/node-merged-pool.git"
+        "url": "https://github.com/yarsawyer/node-multi-hashing.git"
     },
     "dependencies": {
-        "bignum": {
-			"version": "^0.12.5",
-			"from": "bignum@0.12.5",
-			"dependencies": {
-				"node-pre-gyp": {
-					"version": "0.7.0",
-					"from": "node-pre-gyp@0.6.39"
-				}
-			}
-		},
-        "base58-native": "^0.1.4",
-        "async": "^2.5.0",
-		"bitcoinjs-lib": "^3.3.2"
+        "bindings": "^1.3.0",
+        "nan": "^2.8.0"
     },
-    "engines": {
-        "node": ">=8.1.4"
-    }
+    "keywords": [
+        "scrypt",
+        "scryptjane",
+        "script-n",
+        "x11",
+        "quark",
+        "keccak_hash",
+        "skein",
+        "bcrypt",
+        "keccak",
+        "blake",
+        "shavite",
+        "fugue",
+        "sha1",
+        "yescrypt",
+        "yespower",
+        "lyra2re2"
+    ]
 }
